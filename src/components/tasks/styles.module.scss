@@ -4,7 +4,7 @@
     align-items: center;
     border: 1px dashed #D7DDE9;
     width: 80%;
-    height: 5vh;
+    height: 6vh;
     border-radius: 8px;
 
     input {
@@ -13,14 +13,51 @@
         background: white;
         border-radius: 4px;
         width: 3vh;
+        margin-left: 1vw;
+    }
+
+    input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        /* Suporte para navegadores webkit */
+        width: 1.5vw;
+        height: 1.5vw;
+        border: 2px solid #D7DDE9;
+        border-radius: 4px;
+        background-color: white;
+        cursor: pointer;
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Estilo para quando o checkbox estiver marcado */
+    input[type="checkbox"]:checked {
+        background-color: #A0DCF6;
+        border-color: #0796D3;
+    }
+
+     /* Estilo para adicionar o "check" visual */
+     input[type="checkbox"]:checked::after {
+        content: "";
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        width: 30%;
+        height: 60%;
+        border: solid #0796D3;
+        border-width: 0 2px 2px 0;
+        transform: translate(-50%, -50%) rotate(45deg);
     }
 
     .task {
-        
+        margin-left: 1vw;
     }
 
     .button {
         margin-left: auto;
-      }
+        margin-right: 1vw;
+        cursor: pointer;
+        color: #B0BBD1;
+    }
 
 }

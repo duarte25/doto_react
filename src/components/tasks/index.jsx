@@ -1,13 +1,14 @@
 // components/TodoItem.js
 import React from 'react';
 import Styles from './styles.module.scss';
+import { FiTrash } from "react-icons/fi";
 
 const TodoItem = ({ todo, toggleComplete, deleteTodo }) => {
   return (
     <div className={Styles.container} >
-        <input
+      <input
         type="checkbox"
-        checked={todo.completed} 
+        checked={todo.completed}
         onChange={() => toggleComplete(todo.id)}
       />
       <div
@@ -18,8 +19,9 @@ const TodoItem = ({ todo, toggleComplete, deleteTodo }) => {
         {todo.text}
       </div>
       <div className={Styles.button}>
-
-        <button onClick={() => deleteTodo(todo.id)} style={{ color: 'red', cursor: 'pointer' }}>X</button>
+        <button onClick={() => deleteTodo(todo.id)}>
+          <FiTrash />
+        </button>
       </div>
     </div>
   );
