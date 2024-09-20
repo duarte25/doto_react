@@ -57,6 +57,7 @@ const TodoList = () => {
         placeholder="Digite"
         value={todoText}
         onChange={(e) => setTodoText(e.target.value)}
+        buttonClass={Styles.buttonClass}
       />
 
       <div className={Styles.tasks}>
