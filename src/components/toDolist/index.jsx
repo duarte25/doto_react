@@ -2,8 +2,7 @@
 import Styles from "./styles.module.scss";
 import React, { useState, useEffect } from 'react';
 import TodoItem from '../tasks';
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+import TodoPopup from '../popup'; // Importando o novo componente
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -11,7 +10,6 @@ const TodoList = () => {
   const [isAdding, setIsAdding] = useState(false);
   const [todoToDelete, setTodoToDelete] = useState(null);
 
-  // Carregar tarefas do localStorage quando o componente é montado
   useEffect(() => {
     const storedTodos = JSON.parse(localStorage.getItem('todos'));
     if (storedTodos && Array.isArray(storedTodos)) {
@@ -19,7 +17,6 @@ const TodoList = () => {
     }
   }, []);
 
-  // Atualizar o localStorage sempre que os `todos` mudarem
   useEffect(() => {
     if (todos.length > 0) {
       localStorage.setItem('todos', JSON.stringify(todos));
@@ -49,25 +46,18 @@ const TodoList = () => {
   };
 
   return (
-    <div className={Styles.container}
-     style={{ maxWidth: '500px', margin: '0 auto', textAlign: 'center' }}>
+    <div className={Styles.container} >
 
       {/* Popup para adicionar tarefa */}
-      {/* esse popup no futuro deve ser um componente */}
-      <Popup open={isAdding} onClose={() => setIsAdding(false)}>
-        <form onSubmit={(e) => { e.preventDefault(); confirmAddTodo(); }}>
-          <h2>Adicionar Tarefa</h2>
-          <input
-            type="text"
-            value={todoText}
-            onChange={(e) => setTodoText(e.target.value)}
-            placeholder="Nova tarefa"
-            style={{ padding: '10px', width: '80%' }}
-          />
-          <button type="submit" style={{ padding: '10px' }}>Adicionar</button>
-          <button onClick={() => setIsAdding(false)}>Cancelar</button>
-        </form>
-      </Popup>
+      <TodoPopup
+        open={isAdding}
+        onClose={() => setIsAdding(false)}
+        onConfirm={confirmAddTodo}
+        title="Adicionar Tarefa"
+        placeholder="Nova tarefa"
+        value={todoText}
+        onChange={(e) => setTodoText(e.target.value)}
+      />
 
       <div className={Styles.tasks}>
         <h3>Suas tarefas de hoje</h3>
@@ -76,9 +66,8 @@ const TodoList = () => {
             key={todo.id}
             todo={todo}
             toggleComplete={toggleComplete}
-            deleteTodo={() => setTodoToDelete(todo.id)} // Abre o popup para deletar
+            deleteTodo={() => setTodoToDelete(todo.id)}
           />
-
         ))}
         <h3>Tarefas finalizadas</h3>
         {todos.filter(todo => todo.completed).map((todo) => (
@@ -86,7 +75,7 @@ const TodoList = () => {
             key={todo.id}
             todo={todo}
             toggleComplete={toggleComplete}
-            deleteTodo={() => setTodoToDelete(todo.id)} // Abre o popup para deletar
+            deleteTodo={() => setTodoToDelete(todo.id)}
           />
         ))}
       </div>
@@ -95,16 +84,16 @@ const TodoList = () => {
         Adicionar Tarefa
       </button>
 
-
       {/* Popup para confirmar a deleção */}
-      <Popup open={todoToDelete !== null} onClose={() => setTodoToDelete(null)}>
-        <div>
-          <h2>Confirmar Deleção</h2>
-          <p>Você tem certeza que deseja deletar esta tarefa?</p>
-          <button onClick={() => confirmDeleteTodo(todoToDelete)}>Sim</button>
-          <button onClick={() => setTodoToDelete(null)}>Cancelar</button>
-        </div>
-      </Popup>
+      <TodoPopup
+        open={todoToDelete !== null}
+        onClose={() => setTodoToDelete(null)}
+        onConfirm={() => confirmDeleteTodo(todoToDelete)}
+        title="Confirmar Deleção"
+        placeholder={null} // Não precisa de placeholder aqui
+      >
+        <p>Você tem certeza que deseja deletar esta tarefa?</p>
+      </TodoPopup>
 
     </div>
   );
