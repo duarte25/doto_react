@@ -53,8 +53,8 @@ const TodoList = () => {
         open={isAdding}
         onClose={() => setIsAdding(false)}
         onConfirm={confirmAddTodo}
-        title="Adicionar Tarefa"
-        placeholder="Nova tarefa"
+        title="Nova trefa"
+        placeholder="Digite"
         value={todoText}
         onChange={(e) => setTodoText(e.target.value)}
       />

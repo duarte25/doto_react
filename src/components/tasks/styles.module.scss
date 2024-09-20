@@ -3,16 +3,12 @@
     flex-direction: row;
     align-items: center;
     border: 1px dashed #D7DDE9;
-    width: 80%;
+    width: 95%;
     height: 6vh;
     border-radius: 8px;
 
     input {
-        // Borda de um input não é editada assim amigo
-        border: 1px solid #D7DDE9;
         background: white;
-        border-radius: 4px;
-        width: 3vh;
         margin-left: 1vw;
     }
 
@@ -40,10 +36,10 @@
      input[type="checkbox"]:checked::after {
         content: "";
         position: absolute;
-        top: 30%;
+        top: 40%;
         left: 50%;
-        width: 30%;
-        height: 60%;
+        width: 25%;
+        height: 50%;
         border: solid #0796D3;
         border-width: 0 2px 2px 0;
         transform: translate(-50%, -50%) rotate(45deg);
@@ -51,13 +47,24 @@
 
     .task {
         margin-left: 1vw;
+        cursor: pointer;
     }
 
     .button {
         margin-left: auto;
         margin-right: 1vw;
         cursor: pointer;
-        color: #B0BBD1;
+
+        .iconTrash {
+            width: 1.5vw;
+            height: 1.5vw;
+            color: #B0BBD1;
+        }
     }
 
+}
+
+.container:hover {
+    background: #F7F9FD;
+    border: 1px none #D7DDE9;
 }

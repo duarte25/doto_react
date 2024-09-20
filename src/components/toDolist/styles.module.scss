@@ -1,11 +1,13 @@
+@import '../../app/theme.scss';
+
 .container {
-    margin: 0 auto;
-    width: 40%;
+    margin: 5% auto;
+    width: 35%;
 
     .buttonAdd {
         margin-top: 5vh;
         border-radius: 8px;
-        background: linear-gradient(90deg, #0796D3 0%, #53C0F0 68.65%);
+        background: $button-blue;
         border: none;
         width: 100%;
         height: 6vh;
