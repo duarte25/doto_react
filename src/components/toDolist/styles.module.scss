@@ -1,0 +1,29 @@
+.container {
+    .buttonAdd {
+        margin-top: 5vh;
+        border-radius: 8px;
+        background: linear-gradient(90deg, #0796D3 0%, #53C0F0 68.65%);
+        border: none;
+        width: 100%;
+        height: 6vh;
+        color: white;
+        font-weight: bold;
+        font-size: 1.7vw;
+    }
+}
+
+.tasks {
+    border: 1px solid #EAECF0;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    padding: 5%;
+    gap: 1.5vh;
+
+    h3 {
+        opacity: 0.54;
+    }
+}

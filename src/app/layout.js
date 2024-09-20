@@ -6,6 +6,7 @@ export default function RootLayout({ children }) {
     <html lang="pt-br">
       <body>
         <Header />
+        {children}
       </body>
     </html>
   );
