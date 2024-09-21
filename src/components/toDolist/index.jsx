@@ -53,11 +53,13 @@ const TodoList = () => {
         open={isAdding}
         onClose={() => setIsAdding(false)}
         onConfirm={confirmAddTodo}
-        title="Nova trefa"
+        title="Nova tarefa"
+        label="Título"
         placeholder="Digite"
         value={todoText}
         onChange={(e) => setTodoText(e.target.value)}
-        buttonClass={Styles.buttonClass}
+        buttonClass={Styles.buttonClassBlue}
+        buttonTitleConfirm={"Adicionar"}
       />
 
       <div className={Styles.tasks}>
@@ -82,7 +84,7 @@ const TodoList = () => {
       </div>
 
       <button className={Styles.buttonAdd} onClick={() => setIsAdding(true)}>
-        Adicionar Tarefa
+        Adicionar nova tarefa
       </button>
 
       {/* Popup para confirmar a deleção */}
@@ -90,10 +92,14 @@ const TodoList = () => {
         open={todoToDelete !== null}
         onClose={() => setTodoToDelete(null)}
         onConfirm={() => confirmDeleteTodo(todoToDelete)}
-        title="Confirmar Deleção"
-        placeholder={null} // Não precisa de placeholder aqui
+        title="Deletar tarefa"
+        label="Tem certeza que você deseja deletar essa tarefa?"
+        value={null}
+        placeholder={null}
+        buttonClass={Styles.buttonClassRed}
+        labelClassName={Styles.labelClassName}
+        buttonTitleConfirm={"Deletar"}
       >
-        <p>Você tem certeza que deseja deletar esta tarefa?</p>
       </TodoPopup>
 
     </div>

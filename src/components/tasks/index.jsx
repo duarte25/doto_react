@@ -13,15 +13,15 @@ const TodoItem = ({ todo, toggleComplete, deleteTodo }) => {
       />
       <div
         className={Styles.task}
-        style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+        style={{ textDecoration: todo.completed ? 'line-through' : 'none',
+          opacity: todo.completed ? 0.54 : 1
+         }}
         onClick={() => toggleComplete(todo.id)}
       >
         {todo.text}
       </div>
       <div className={Styles.button}>
-
           <FiTrash onClick={() => deleteTodo(todo.id)} className={Styles.iconTrash}/>
-
       </div>
     </div>
   );
