@@ -1,18 +1,25 @@
-
 .header {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     margin: 1% 5%;
-    font-size: 0.8vw;
+    font-size: 0.6em;
     border-bottom: 1px solid #D7DDE9;
+    padding: 1.5rem 0;
+
+    .logo {
+        width: 8rem;
+        height: 100%;
+    }
+
+    @media (max-width: 750px) {
+        .header {
+            margin: 0;
+        }
+    }
 }
 
 .header h2 {
     opacity: 0.54;
-}
-
-.logo {
-    width: 10%;
 }

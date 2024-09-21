@@ -1,8 +1,7 @@
-"use client"; // Adicione isso no topo
-import Styles from "./styles.module.scss";
 import React, { useState, useEffect } from 'react';
+import Styles from "./styles.module.scss";
 import TodoItem from '../tasks';
-import TodoPopup from '../popup'; // Importando o novo componente
+import TodoPopup from '../popup';
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -45,8 +44,12 @@ const TodoList = () => {
     setTodoToDelete(null);
   };
 
+  const isPopupOpen = isAdding || todoToDelete !== null;
+
   return (
-    <div className={Styles.container} >
+    <div className={Styles.container}>
+      {/* Aplicando a classe de opacidade no fundo */}
+      {isPopupOpen && <div className={Styles.backgroundOverlay}></div>}
 
       {/* Popup para adicionar tarefa */}
       <TodoPopup
@@ -62,7 +65,7 @@ const TodoList = () => {
         buttonTitleConfirm={"Adicionar"}
       />
 
-      <div className={Styles.tasks}>
+      <div className={`${Styles.tasks} ${isPopupOpen ? Styles.popupOpen : ''}`}>
         <h3>Suas tarefas de hoje</h3>
         {todos.filter(todo => !todo.completed).map((todo) => (
           <TodoItem
@@ -99,9 +102,7 @@ const TodoList = () => {
         buttonClass={Styles.buttonClassRed}
         labelClassName={Styles.labelClassName}
         buttonTitleConfirm={"Deletar"}
-      >
-      </TodoPopup>
-
+      />
     </div>
   );
 };
