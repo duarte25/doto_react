@@ -1,18 +1,48 @@
-// TodoPopup.js
-"use client"; // Adicione isso no topo
-import React from 'react';
+"use client"; 
+import React, { useEffect, useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import Styles from "./styles.module.scss";
 
 const TodoPopup = ({ open, onClose, onConfirm, title, label, placeholder, value, onChange, buttonClass, labelClassName, buttonTitleConfirm }) => {
+  const [popupWidth, setPopupWidth] = useState("26rem");
+  const [popupHeight, setPopupHeight] = useState("auto");
+  const [popupBorder, setPopupBorder] = useState("16px");
 
-  const contentStyle = { width: "25%", height: "auto", boxShadow: "0px 24px 48px -12px rgba(16, 24, 40, 0.18)", borderRadius: "16px" }
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 450) {
+        setPopupWidth("100%");
+        setPopupHeight("100%");
+        setPopupBorder("0")
+      } else {
+        setPopupWidth("26rem");
+        setPopupHeight("auto")
+        setPopupBorder("16px")
+      }
+    };
+
+    handleResize(); 
+    window.addEventListener('resize', handleResize); 
+
+    return () => {
+      window.removeEventListener('resize', handleResize); 
+    };
+  }, []);
+
+  const contentStyle = { 
+    width: popupWidth,
+    height: popupHeight, 
+    boxShadow: "0px 24px 48px -12px rgba(16, 24, 40, 0.18)",
+    padding: "1rem",
+    borderRadius: popupBorder
+  };
+
   return (
-    <Popup {...{ contentStyle }} open={open} onClose={onClose}>
+    <Popup contentStyle={contentStyle} open={open} onClose={onClose}>
       <form className={Styles.popupForm} onSubmit={(e) => { e.preventDefault(); onConfirm(); }}>
         <h2>{title}</h2>
-        <div className={Styles.inputDigit} >
+        <div className={Styles.inputDigit}>
           <h3 className={labelClassName}>{label}</h3>
           {placeholder && (
             <input

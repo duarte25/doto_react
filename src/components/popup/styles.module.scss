@@ -4,21 +4,21 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 1vw;
+    gap: 1.2rem;
     margin: 5%;
 
     .inputDigit {
         width: 100%;
 
         h3 {
-            font-size: 0.9vw;
-            padding-bottom: 0.3vw;
+            font-size: 1.08rem;
+            padding-bottom: 0.36rem;
             font-weight: normal;
         }
 
         input {
             width: 100%;
-            height: 5vh;
+            height: 3.375rem;
             border: #D7DDE9;
         }
 
@@ -54,7 +54,7 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-        gap: 1vw;
+        gap: 1.2rem;
 
         .buttonCancel {
             background: #E7EEFB;
@@ -66,11 +66,19 @@
 
         button {
             width: 100%;
-            height: 6vh;
+            height: 4.05rem;
             border-radius: 8px;
-            font-size: 0.9vw;
+            font-size: 1.08rem;
             font-style: normal;
             font-weight: 400;
+        }
+    }
+
+    @media (max-width: 450px) {
+
+        .buttons {
+            display: flex;
+            flex-direction: column-reverse;
         }
     }
 }
