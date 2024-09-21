@@ -1,8 +1,10 @@
+@import "../../app/theme.scss";
+
 .container {
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 1px dashed #D7DDE9;
+    border: 1px dashed $color-primary;
     width: 95%;
     height: 4.05em;
     border-radius: 8px;
@@ -19,7 +21,7 @@
         /* Suporte para navegadores webkit */
         width: 1.8rem;
         height: 1.8rem;
-        border: 2px solid #D7DDE9;
+        border: 2px solid $color-primary;
         border-radius: 4px;
         background-color: white;
         cursor: pointer;
@@ -29,8 +31,8 @@
 
     /* Estilo para quando o checkbox estiver marcado */
     input[type="checkbox"]:checked {
-        background-color: #A0DCF6;
-        border-color: #0796D3;
+        background-color: $color-fourth;
+        border-color: $color-fifth;
     }
 
      /* Estilo para adicionar o "check" visual */
@@ -41,7 +43,7 @@
         left: 50%;
         width: 25%;
         height: 50%;
-        border: solid #0796D3;
+        border: solid $color-fifth;
         border-width: 0 2px 2px 0;
         transform: translate(-50%, -50%) rotate(45deg);
     }
@@ -67,5 +69,5 @@
 
 .container:hover {
     background: #F7F9FD;
-    border: 1px none #D7DDE9;
+    border: 1px none $color-primary;
 }
